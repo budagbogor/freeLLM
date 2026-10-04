@@ -1,0 +1,364 @@
+[
+  {
+    "id": "groq",
+    "name": "Groq Cloud",
+    "category": "no_cc",
+    "badge": "Ultra Cepat (LPU)",
+    "description": "Provider tercepat di dunia menggunakan chip LPU. 100% gratis tanpa kartu kredit, batas 30 request/menit.",
+    "registerUrl": "https://console.groq.com/keys",
+    "docsUrl": "https://console.groq.com/docs/quickstart",
+    "baseUrl": "https://api.groq.com/openai/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "GROQ_API_KEY",
+    "defaultModel": "llama-3.3-70b-versatile",
+    "models": [
+      { "id": "llama-3.3-70b-versatile", "name": "Llama 3.3 70B Versatile", "context": "128K", "type": "chat" },
+      { "id": "llama-3.1-8b-instant", "name": "Llama 3.1 8B Instant (Ultra Cepat)", "context": "128K", "type": "chat" },
+      { "id": "deepseek-r1-distill-llama-70b", "name": "DeepSeek R1 Distill Llama 70B", "context": "128K", "type": "reasoning" },
+      { "id": "mixtral-8x7b-32768", "name": "Mixtral 8x7B", "context": "32K", "type": "chat" },
+      { "id": "gemma2-9b-it", "name": "Gemma 2 9B", "context": "8K", "type": "chat" }
+    ],
+    "rateLimit": "30 RPM / 14,400 RPD",
+    "guide": [
+      "Buka https://console.groq.com/keys",
+      "Login dengan akun Google atau GitHub",
+      "Klik tombol 'Create API Key'",
+      "Beri nama key (misal: 'MyFreeKey') dan klik 'Submit'",
+      "Salin API Key dan simpan di dashboard ini."
+    ]
+  },
+  {
+    "id": "gemini",
+    "name": "Google Gemini (AI Studio)",
+    "category": "no_cc",
+    "badge": "Konteks 1M-2M Token",
+    "description": "Akses resmi model tercanggih Google Gemini 2.5, 2.0 Flash, dan 1.5 Pro. Gratis 15 RPM & 1,500 RPD.",
+    "registerUrl": "https://aistudio.google.com/app/apikey",
+    "docsUrl": "https://ai.google.dev/gemini-api/docs",
+    "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "GEMINI_API_KEY",
+    "defaultModel": "gemini-2.0-flash",
+    "models": [
+      { "id": "gemini-2.5-flash", "name": "Gemini 2.5 Flash (Terbaru)", "context": "1M", "type": "multimodal" },
+      { "id": "gemini-2.0-flash", "name": "Gemini 2.0 Flash", "context": "1M", "type": "multimodal" },
+      { "id": "gemini-1.5-flash", "name": "Gemini 1.5 Flash", "context": "1M", "type": "multimodal" },
+      { "id": "gemini-1.5-pro", "name": "Gemini 1.5 Pro", "context": "2M", "type": "multimodal" }
+    ],
+    "rateLimit": "15 RPM / 1,500 RPD / Gratis Selamanya",
+    "guide": [
+      "Buka https://aistudio.google.com/app/apikey",
+      "Login menggunakan Akun Google Anda",
+      "Klik tombol 'Create API key' / 'Get API key'",
+      "Pilih 'Create API key in new project'",
+      "Salin string API key yang muncul dan simpan."
+    ]
+  },
+  {
+    "id": "openrouter",
+    "name": "OpenRouter (Free Models)",
+    "category": "no_cc",
+    "badge": "30+ Model Gratis",
+    "description": "Gateway multi-provider yang menyediakan puluhan model AI gratis (:free) termasuk DeepSeek R1, Llama 3.3, dan Qwen.",
+    "registerUrl": "https://openrouter.ai/keys",
+    "docsUrl": "https://openrouter.ai/docs",
+    "baseUrl": "https://openrouter.ai/api/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "OPENROUTER_API_KEY",
+    "defaultModel": "meta-llama/llama-3.3-70b-instruct:free",
+    "models": [
+      { "id": "meta-llama/llama-3.3-70b-instruct:free", "name": "Llama 3.3 70B (Free)", "context": "128K", "type": "chat" },
+      { "id": "deepseek/deepseek-r1:free", "name": "DeepSeek R1 (Free)", "context": "128K", "type": "reasoning" },
+      { "id": "google/gemini-2.0-flash-exp:free", "name": "Gemini 2.0 Flash Exp (Free)", "context": "1M", "type": "multimodal" },
+      { "id": "qwen/qwen-2.5-coder-32b-instruct:free", "name": "Qwen 2.5 Coder 32B (Free)", "context": "32K", "type": "code" },
+      { "id": "mistralai/mistral-small-24b-instruct-2501:free", "name": "Mistral Small 24B (Free)", "context": "32K", "type": "chat" }
+    ],
+    "rateLimit": "20-50 RPM untuk model berakhiran :free",
+    "guide": [
+      "Buka https://openrouter.ai/keys",
+      "Login dengan akun GitHub atau Google",
+      "Klik 'Create Key', beri nama key",
+      "Salin API Key (diawali sk-or-v1-...). Model berlabel ':free' 100% gratis digunakan."
+    ]
+  },
+  {
+    "id": "cerebras",
+    "name": "Cerebras Inference",
+    "category": "no_cc",
+    "badge": "Kecepatan 2000+ T/s",
+    "description": "Inference AI tercepat di dunia bertenaga chip Wafer-Scale Engine (CS-3). Gratis tanpa kartu kredit.",
+    "registerUrl": "https://cloud.cerebras.ai/",
+    "docsUrl": "https://inference-docs.cerebras.ai/",
+    "baseUrl": "https://api.cerebras.ai/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "CEREBRAS_API_KEY",
+    "defaultModel": "llama3.1-70b",
+    "models": [
+      { "id": "llama3.1-70b", "name": "Llama 3.1 70B", "context": "128K", "type": "chat" },
+      { "id": "llama3.1-8b", "name": "Llama 3.1 8B", "context": "128K", "type": "chat" }
+    ],
+    "rateLimit": "30 RPM / 1M Token per Hari",
+    "guide": [
+      "Buka https://cloud.cerebras.ai/",
+      "Daftar dengan email atau GitHub",
+      "Masuk ke menu 'API Keys'",
+      "Klik 'Create New API Key' dan salin kuncinya."
+    ]
+  },
+  {
+    "id": "sambanova",
+    "name": "SambaNova Cloud",
+    "category": "no_cc",
+    "badge": "Akselerator Enterprise",
+    "description": "Inference enterprise bertenaga SambaNova SN40L. Menyediakan DeepSeek R1 & Llama 3.3 70B gratis.",
+    "registerUrl": "https://cloud.sambanova.ai/apis",
+    "docsUrl": "https://docs.sambanova.ai/",
+    "baseUrl": "https://api.sambanova.ai/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "SAMBANOVA_API_KEY",
+    "defaultModel": "Meta-Llama-3.3-70B-Instruct",
+    "models": [
+      { "id": "Meta-Llama-3.3-70B-Instruct", "name": "Meta Llama 3.3 70B", "context": "128K", "type": "chat" },
+      { "id": "DeepSeek-R1-Distill-Llama-70B", "name": "DeepSeek R1 Distill 70B", "context": "128K", "type": "reasoning" },
+      { "id": "Qwen2.5-72B-Instruct", "name": "Qwen 2.5 72B Instruct", "context": "128K", "type": "chat" }
+    ],
+    "rateLimit": "20 RPM / 20 RPD / 200K TPD",
+    "guide": [
+      "Buka https://cloud.sambanova.ai/apis",
+      "Daftar akun gratis dengan email",
+      "Buka menu API Keys dan klik 'Create API Key'",
+      "Simpan API Key yang dihasilkan."
+    ]
+  },
+  {
+    "id": "mistral",
+    "name": "Mistral AI (La Plateforme)",
+    "category": "no_cc",
+    "badge": "Model Eropa Terbaik",
+    "description": "Platform resmi Mistral AI. Akses gratis untuk eksperimen dan pembuatan prototipe.",
+    "registerUrl": "https://console.mistral.ai/api-keys",
+    "docsUrl": "https://docs.mistral.ai/",
+    "baseUrl": "https://api.mistral.ai/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "MISTRAL_API_KEY",
+    "defaultModel": "mistral-small-latest",
+    "models": [
+      { "id": "mistral-small-latest", "name": "Mistral Small Latest", "context": "128K", "type": "chat" },
+      { "id": "open-mistral-7b", "name": "Open Mistral 7B", "context": "32K", "type": "chat" },
+      { "id": "open-mixtral-8x7b", "name": "Open Mixtral 8x7B", "context": "32K", "type": "chat" },
+      { "id": "codestral-latest", "name": "Codestral Latest (Khusus Coding)", "context": "256K", "type": "code" }
+    ],
+    "rateLimit": "1 RPS / 500K TPM",
+    "guide": [
+      "Kunjungi https://console.mistral.ai/api-keys",
+      "Daftar / Login dengan akun email",
+      "Buka tab 'API Keys' -> 'Create new key'",
+      "Salin dan masukkan key ke dashboard."
+    ]
+  },
+  {
+    "id": "huggingface",
+    "name": "Hugging Face Inference",
+    "category": "no_cc",
+    "badge": "Ribuan Model Open-Source",
+    "description": "Akses ribuan model open-source langsung dari Hugging Face Hub via Router OpenAI-compatible.",
+    "registerUrl": "https://huggingface.co/settings/tokens",
+    "docsUrl": "https://huggingface.co/docs/api-inference",
+    "baseUrl": "https://router.huggingface.co/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "HUGGINGFACE_API_KEY",
+    "defaultModel": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+    "models": [
+      { "id": "meta-llama/Meta-Llama-3.1-8B-Instruct", "name": "Meta Llama 3.1 8B Instruct", "context": "128K", "type": "chat" },
+      { "id": "Qwen/Qwen2.5-72B-Instruct", "name": "Qwen 2.5 72B Instruct", "context": "32K", "type": "chat" },
+      { "id": "google/gemma-2-27b-it", "name": "Google Gemma 2 27B", "context": "8K", "type": "chat" }
+    ],
+    "rateLimit": "Free Tier Rate Limited per IP/Token",
+    "guide": [
+      "Buka https://huggingface.co/settings/tokens",
+      "Login atau buat akun Hugging Face gratis",
+      "Klik 'Create new token', pilih role 'Read'",
+      "Beri nama token dan salin hasilnya."
+    ]
+  },
+  {
+    "id": "siliconflow",
+    "name": "SiliconFlow (SiliconCloud)",
+    "category": "registration",
+    "badge": "Gratis DeepSeek V3 & R1",
+    "description": "Penyedia cloud AI terkemuka dengan model gratis DeepSeek V3, R1, Qwen, dan embedding.",
+    "registerUrl": "https://cloud.siliconflow.cn/account/ak",
+    "docsUrl": "https://docs.siliconflow.cn/en/introduction",
+    "baseUrl": "https://api.siliconflow.cn/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "SILICONFLOW_API_KEY",
+    "defaultModel": "deepseek-ai/DeepSeek-V3",
+    "models": [
+      { "id": "deepseek-ai/DeepSeek-V3", "name": "DeepSeek V3", "context": "64K", "type": "chat" },
+      { "id": "deepseek-ai/DeepSeek-R1", "name": "DeepSeek R1", "context": "64K", "type": "reasoning" },
+      { "id": "Qwen/Qwen2.5-7B-Instruct", "name": "Qwen 2.5 7B Instruct", "context": "32K", "type": "chat" }
+    ],
+    "rateLimit": "30 RPM / 60K TPM",
+    "guide": [
+      "Buka https://cloud.siliconflow.cn/account/ak",
+      "Daftar akun gratis menggunakan email",
+      "Buka menu 'API Keys' dan buat API key baru",
+      "Salin key (format: sk-...) ke dashboard."
+    ]
+  },
+  {
+    "id": "cloudflare",
+    "name": "Cloudflare Workers AI",
+    "category": "no_cc",
+    "badge": "10,000 Neurons/Hari",
+    "description": "Serverless AI di edge network Cloudflare global. Gratis 10K neurons setiap hari tanpa bayar.",
+    "registerUrl": "https://dash.cloudflare.com/profile/api-tokens",
+    "docsUrl": "https://developers.cloudflare.com/workers-ai/",
+    "baseUrl": "https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "CLOUDFLARE_API_KEY",
+    "defaultModel": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "models": [
+      { "id": "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "name": "Llama 3.3 70B Fast", "context": "24K", "type": "chat" },
+      { "id": "@cf/mistral/mistral-7b-instruct-v0.1", "name": "Mistral 7B Instruct", "context": "32K", "type": "chat" },
+      { "id": "@cf/qwen/qwen1.5-7b-chat", "name": "Qwen 1.5 7B Chat", "context": "32K", "type": "chat" }
+    ],
+    "rateLimit": "10,000 Neurons / Hari (Reset tiap 24 jam)",
+    "guide": [
+      "Buka https://dash.cloudflare.com/profile/api-tokens",
+      "Buat token dengan template 'Workers AI Read/Write'",
+      "Dapatkan Account ID dari URL dashboard Cloudflare",
+      "Masukkan API Token ke dashboard."
+    ]
+  },
+  {
+    "id": "cohere",
+    "name": "Cohere",
+    "category": "no_cc",
+    "badge": "Trial Key Permanen",
+    "description": "Model enterprise Command R dan Command R+ dengan kemampuan RAG dan tool-use luar biasa. Gratis 20 RPM.",
+    "registerUrl": "https://dashboard.cohere.com/api-keys",
+    "docsUrl": "https://docs.cohere.com/",
+    "baseUrl": "https://api.cohere.com/v2",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "COHERE_API_KEY",
+    "defaultModel": "command-r",
+    "models": [
+      { "id": "command-r-plus", "name": "Command R+", "context": "128K", "type": "chat" },
+      { "id": "command-r", "name": "Command R", "context": "128K", "type": "chat" }
+    ],
+    "rateLimit": "20 RPM / 1000 RPD (Trial Key)",
+    "guide": [
+      "Buka https://dashboard.cohere.com/api-keys",
+      "Daftar dengan email atau Google",
+      "Salin 'Trial API Key' yang sudah langsung tersedia di dashboard."
+    ]
+  },
+  {
+    "id": "ai21",
+    "name": "AI21 Labs",
+    "category": "no_cc",
+    "badge": "Arsitektur Hybrid Jamba",
+    "description": "Pencipta model hybrid SSM-Transformer Jamba dengan efisiensi memori dan konteks 256K token.",
+    "registerUrl": "https://studio.ai21.com/account/api-key",
+    "docsUrl": "https://docs.ai21.com/",
+    "baseUrl": "https://api.ai21.com/studio/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "AI21_API_KEY",
+    "defaultModel": "jamba-mini-2",
+    "models": [
+      { "id": "jamba-mini-2", "name": "Jamba Mini 2", "context": "256K", "type": "chat" },
+      { "id": "jamba-large-1-7", "name": "Jamba Large 1.7", "context": "256K", "type": "chat" }
+    ],
+    "rateLimit": "200 RPM / 10 RPS",
+    "guide": [
+      "Kunjungi https://studio.ai21.com/account/api-key",
+      "Daftar akun gratis",
+      "Salin API key Anda dari halaman profil/akun."
+    ]
+  },
+  {
+    "id": "nvidia",
+    "name": "NVIDIA NIM",
+    "category": "phone_verify",
+    "badge": "1,000 Free Credits",
+    "description": "Koleksi 130+ microservices model AI resmi dari NVIDIA dengan optimasi TensorRT-LLM.",
+    "registerUrl": "https://build.nvidia.com/settings/api-keys",
+    "docsUrl": "https://docs.api.nvidia.com/",
+    "baseUrl": "https://integrate.api.nvidia.com/v1",
+    "creditCardRequired": false,
+    "phoneRequired": true,
+    "envKey": "NVIDIA_API_KEY",
+    "defaultModel": "meta/llama-3.3-70b-instruct",
+    "models": [
+      { "id": "meta/llama-3.3-70b-instruct", "name": "NVIDIA Llama 3.3 70B", "context": "128K", "type": "chat" },
+      { "id": "deepseek-ai/deepseek-r1", "name": "DeepSeek R1 (NVIDIA)", "context": "128K", "type": "reasoning" },
+      { "id": "nvidia/llama-3.1-nemotron-70b-instruct", "name": "Llama 3.1 Nemotron 70B", "context": "128K", "type": "chat" }
+    ],
+    "rateLimit": "40 RPM (1,000 API call credits gratis)",
+    "guide": [
+      "Buka https://build.nvidia.com/settings/api-keys",
+      "Login dengan akun NVIDIA dan verifikasi nomor HP",
+      "Klik 'Generate Key' untuk mendapatkan API key gratis."
+    ]
+  },
+  {
+    "id": "llm7",
+    "name": "LLM7.io",
+    "category": "no_cc",
+    "badge": "Tanpa Registrasi / Anonim",
+    "description": "Provider publik gratis yang bisa digunakan langsung bahkan tanpa registrasi rumit.",
+    "registerUrl": "https://token.llm7.io",
+    "docsUrl": "https://llm7.io",
+    "baseUrl": "https://api.llm7.io/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "LLM7_API_KEY",
+    "defaultModel": "gpt-oss-20b",
+    "models": [
+      { "id": "gpt-oss-20b", "name": "GPT OSS 20B", "context": "128K", "type": "chat" },
+      { "id": "mistral-Nemo-Instruct-2407", "name": "Mistral Nemo Instruct", "context": "128K", "type": "chat" }
+    ],
+    "rateLimit": "10 RPM / 60 Req/Jam (Anonim) / Lebih besar dengan Token",
+    "guide": [
+      "Buka https://token.llm7.io",
+      "Dapatkan token instan Anda tanpa kartu kredit",
+      "Masukkan key ke dashboard."
+    ]
+  },
+  {
+    "id": "modelscope",
+    "name": "ModelScope (Alibaba)",
+    "category": "registration",
+    "badge": "60+ Model Komunitas",
+    "description": "Komunitas model AI terbuka terbesar dari Alibaba. Menyediakan seri Qwen dan MiniMax gratis.",
+    "registerUrl": "https://modelscope.cn/my/myaccesstoken",
+    "docsUrl": "https://modelscope.cn/docs",
+    "baseUrl": "https://api-inference.modelscope.cn/v1",
+    "creditCardRequired": false,
+    "phoneRequired": false,
+    "envKey": "MODELSCOPE_API_KEY",
+    "defaultModel": "qwen-qwen3-5-27b",
+    "models": [
+      { "id": "qwen-qwen3-5-27b", "name": "Qwen 3.5 27B", "context": "256K", "type": "chat" },
+      { "id": "MiniMax/MiniMax-M2.5", "name": "MiniMax M2.5 Highspeed", "context": "204K", "type": "chat" }
+    ],
+    "rateLimit": "2,000 RPD Total",
+    "guide": [
+      "Buka https://modelscope.cn/my/myaccesstoken",
+      "Daftar / Login akun ModelScope",
+      "Buka Access Token dan salin token Anda."
+    ]
+  }
+]

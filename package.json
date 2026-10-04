@@ -1,0 +1,23 @@
+{
+  "name": "awesome-freellm-hub",
+  "version": "1.0.0",
+  "description": "Dashboard & Unified OpenAI-Compatible Proxy Gateway for 30+ Free LLM Providers",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test-keys": "python test_keys.py"
+  },
+  "keywords": [
+    "llm",
+    "free-llm-api",
+    "groq",
+    "gemini",
+    "cerebras",
+    "sambanova",
+    "openrouter",
+    "openai-proxy"
+  ],
+  "author": "Antigravity Pair Programmer",
+  "license": "MIT"
+}

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreeLLM Hub — Dapatkan & Kelola Akses API Key Gratis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Header -->
+    <header class="header">
+      <div class="logo-area">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-title">
+          <h1>FreeLLM Hub & Gateway</h1>
+          <p>Kompilasi & Akses 30+ Provider LLM Gratis Selamanya (Tanpa Kartu Kredit)</p>
+        </div>
+      </div>
+      <div class="header-status">
+        <div class="proxy-pill">
+          <div class="pulse-dot"></div>
+          <span>Proxy OpenAI Aktif: <strong>http://localhost:3000/v1</strong></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-directory">
+        <span>🔑</span> Dapatkan & Kelola API Key
+      </button>
+      <button class="tab-btn" data-tab="tab-playground">
+        <span>💬</span> AI Chat Playground
+      </button>
+      <button class="tab-btn" data-tab="tab-proxy">
+        <span>🔀</span> Gateway & Integrasi IDE
+      </button>
+      <button class="tab-btn" data-tab="tab-guide">
+        <span>📖</span> Panduan Pemula & FAQ
+      </button>
+    </nav>
+
+    <!-- TAB 1: Provider Directory & Key Manager -->
+    <section id="tab-directory" class="tab-pane active">
+      
+      <!-- Quick Start Wizard Banner -->
+      <div class="wizard-banner">
+        <div class="wizard-header">
+          <h2><span>💡</span> Alur Cepat 4 Langkah (Mulai Dari Sini):</h2>
+          <div style="display: flex; gap: 8px;">
+            <button id="btn-test-all-top" class="btn btn-success" style="font-size: 0.78rem;">
+              <span>⚡</span> Uji Semua Key Aktif
+            </button>
+            <button class="btn btn-secondary" onclick="document.querySelector('[data-tab=\'tab-guide\']').click()" style="font-size: 0.78rem;">
+              📖 Baca Panduan Lengkap ➔
+            </button>
+          </div>
+        </div>
+        <div class="wizard-steps-grid">
+          <div class="wizard-step-item">
+            <div>
+              <span class="step-num-badge">1</span>
+              <h4>Pilih Provider Gratis</h4>
+              <p>Mulai dengan <strong>Groq Cloud</strong> atau <strong>Google Gemini</strong>. Klik tombol biru <em>"Dapatkan Key ↗"</em> untuk membuka situs resmi.</p>
+            </div>
+          </div>
+          <div class="wizard-step-item">
+            <div>
+              <span class="step-num-badge">2</span>
+              <h4>Buat & Salin Key</h4>
+              <p>Login dengan Google di situs provider -> Buat API Key -> Salin string kuncinya (gratis tanpa kartu kredit).</p>
+            </div>
+          </div>
+          <div class="wizard-step-item">
+            <div>
+              <span class="step-num-badge">3</span>
+              <h4>Tempel & Simpan</h4>
+              <p>Tempel key di kolom input provider lalu klik <strong>"Simpan"</strong> & <strong>"⚡ Uji Ping"</strong> sampai sukses hijau.</p>
+            </div>
+          </div>
+          <div class="wizard-step-item">
+            <div>
+              <span class="step-num-badge">4</span>
+              <h4>Gunakan di Cursor / Chat</h4>
+              <p>Coba langsung di tab <strong>AI Chat Playground</strong> atau masukkan ke Cursor dengan model <code>auto-free</code>!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls & Search -->
+      <div class="controls-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="search" id="search-input" class="search-input" placeholder="Cari provider (Groq, Gemini, DeepSeek, Cerebras...)..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="search_provider_query">
+          <button id="clear-search-btn" class="clear-search-btn" title="Hapus Pencarian" style="display: none;">✕</button>
+        </div>
+        <div class="filter-chips">
+          <button class="chip active" data-filter="all">Semua Provider</button>
+          <button class="chip" data-filter="no_cc">100% Tanpa Kartu Kredit</button>
+          <button class="chip" data-filter="configured">Sudah Terisi Key</button>
+          <button class="chip" data-filter="unconfigured">Belum Terisi</button>
+        </div>
+      </div>
+
+      <!-- Provider Cards Grid -->
+      <div id="provider-grid" class="provider-grid">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </section>
+
+    <!-- TAB 2: AI Chat Playground -->
+    <section id="tab-playground" class="tab-pane">
+      <div class="playground-layout">
+        <div class="playground-sidebar">
+          <h3 style="margin-bottom: 16px; font-size: 1.1rem;">⚙️ Konfigurasi Model</h3>
+          
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 6px;">Pilih Provider & Model Gratis</label>
+            <select id="chat-model-select" class="key-input" style="width: 100%;">
+              <!-- Dynamic model options -->
+            </select>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 6px;">System Prompt</label>
+            <textarea id="chat-system-prompt" class="chat-textarea" style="width: 100%; height: 90px;" placeholder="You are a helpful coding assistant."></textarea>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 6px;">
+              <span>Temperature</span>
+              <span id="temp-val">0.7</span>
+            </label>
+            <input type="range" id="chat-temp" min="0" max="1" step="0.1" value="0.7" style="width: 100%;">
+          </div>
+
+          <div class="card-metrics" style="margin-top: 20px;">
+            <div class="metric-item">
+              <span>Endpoint Proxy</span>
+              <strong>localhost:3000/v1</strong>
+            </div>
+            <div class="metric-item">
+              <span>Status Server</span>
+              <strong style="color: #34d399;">Online (Auto-Failover)</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="playground-chat">
+          <div id="chat-messages" class="chat-messages">
+            <div class="chat-bubble assistant">
+              Halo! Saya adalah FreeLLM Playground. Silakan pilih provider/model di sebelah kiri dan ketikkan pertanyaan atau perintah kode yang ingin Anda uji.
+            </div>
+          </div>
+          <div class="chat-input-area">
+            <textarea id="chat-user-input" class="chat-textarea" rows="2" placeholder="Ketik pesan Anda di sini... (Tekan Enter untuk kirim, Shift+Enter untuk baris baru)"></textarea>
+            <button id="chat-send-btn" class="btn btn-primary" style="padding: 0 20px;">
+              <span>Kirim</span> ➔
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: Gateway & Integrasi IDE -->
+    <section id="tab-proxy" class="tab-pane">
+      
+      <!-- Master Key & Auto-Failover Highlight -->
+      <div class="config-card" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(6, 182, 212, 0.15)); border-color: rgba(99, 102, 241, 0.4);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+          <h2 style="font-size: 1.3rem; color: #fff; display: flex; align-items: center; gap: 8px;">
+            <span>🎯</span> 1 Master API Key untuk Semua IDE & Provider
+          </h2>
+          <span class="badge-tag" style="background: #10b981; color: #fff; padding: 6px 12px; font-size: 0.82rem;">⚡ Auto-Failover Aktif</span>
+        </div>
+        <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">
+          Anda <strong>tidak perlu mengganti-ganti API key di Cursor atau OpenCode</strong>. Cukup gunakan <strong>1 Master Key</strong> dan <strong>1 Local Base URL</strong> di bawah ini. Ketika salah satu provider kehabisan token atau terkena <em>rate limit</em> (429), server FreeLLM Hub akan <strong>otomatis mengalihkan permintaan ke provider cadangan</strong> secara instan tanpa menghentikan IDE Anda!
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 14px;">
+          <div style="background: rgba(0,0,0,0.35); padding: 14px; border-radius: 10px; border: 1px solid var(--border-color);">
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Base URL (Semua Tools)</span>
+            <strong style="color: #38bdf8; font-family: monospace; font-size: 1.05rem;">http://localhost:3000/v1</strong>
+          </div>
+          <div style="background: rgba(0,0,0,0.35); padding: 14px; border-radius: 10px; border: 1px solid var(--border-color);">
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Master API Key (Bebas/Tetap)</span>
+            <strong style="color: #34d399; font-family: monospace; font-size: 1.05rem;">sk-freellm-master</strong>
+          </div>
+          <div style="background: rgba(0,0,0,0.35); padding: 14px; border-radius: 10px; border: 1px solid var(--border-color);">
+            <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Model Auto-Switch Cerdas</span>
+            <strong style="color: #fbbf24; font-family: monospace; font-size: 1.05rem;">auto-free</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Auto Failover Chain Visualization -->
+      <div class="config-card">
+        <h3>🔄 Urutan Rantai Auto-Failover Otomatis</h3>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 12px;">
+          Jika Anda menggunakan model <code>auto-free</code>, alur pengalihan otomatis bekerja seperti ini:
+        </p>
+        <div style="background: #020617; padding: 16px; border-radius: 10px; border: 1px solid var(--border-color); font-size: 0.88rem; color: #94a3b8; line-height: 1.8;">
+          <strong style="color: #38bdf8;">Groq</strong> (Llama 3.3 70B) 
+          ➔ <strong style="color: #38bdf8;">Cerebras</strong> (Llama 3.1 70B) 
+          ➔ <strong style="color: #38bdf8;">SambaNova</strong> (DeepSeek R1 / Llama 70B) 
+          ➔ <strong style="color: #38bdf8;">Google Gemini</strong> (Gemini 2.0 Flash) 
+          ➔ <strong style="color: #38bdf8;">OpenRouter</strong> (30+ Model Free) 
+          ➔ <strong style="color: #38bdf8;">Mistral / SiliconFlow</strong>
+        </div>
+      </div>
+
+      <!-- IDE Configs -->
+      <div class="config-card">
+        <h3>1. Cursor IDE & OpenCode</h3>
+        <p style="color: var(--text-secondary); font-size: 0.85rem;">Masuk ke <strong>Settings → Models → OpenAI API Key</strong>:</p>
+        <div class="code-block">
+          <button class="btn btn-secondary btn-copy-code" onclick="copySnippet(this)">Salin</button>
+<code>Base URL  : http://localhost:3000/v1
+API Key   : sk-freellm-master
+Model Name: auto-free (atau llama-3.3-70b-versatile / gemini-2.0-flash)</code>
+        </div>
+      </div>
+
+      <div class="config-card">
+        <h3>2. Claude Code CLI</h3>
+        <div class="code-block">
+          <button class="btn btn-secondary btn-copy-code" onclick="copySnippet(this)">Salin</button>
+<code># PowerShell
+$env:ANTHROPIC_BASE_URL="https://openrouter.ai/api"
+$env:ANTHROPIC_AUTH_TOKEN="sk-or-v1-kunci-openrouter-anda"
+$env:ANTHROPIC_API_KEY=""
+claude</code>
+        </div>
+      </div>
+
+      <div class="config-card">
+        <h3>3. Python (OpenAI SDK)</h3>
+        <div class="code-block">
+          <button class="btn btn-secondary btn-copy-code" onclick="copySnippet(this)">Salin</button>
+<code>from openai import OpenAI
+
+# 1 Client untuk semua provider AI gratis!
+client = OpenAI(
+    base_url="http://localhost:3000/v1",
+    api_key="sk-freellm-master"
+)
+
+response = client.chat.completions.create(
+    model="auto-free", # Otomatis berpindah provider jika token/rate-limit habis!
+    messages=[{"role": "user", "content": "Tuliskan fungsi Python untuk web scraping async."}]
+)
+
+print(response.choices[0].message.content)</code>
+        </div>
+      </div>
+
+      <div class="config-card">
+        <h3>4. Aider / VS Code Cline / Roo Code</h3>
+        <div class="code-block">
+          <button class="btn btn-secondary btn-copy-code" onclick="copySnippet(this)">Salin</button>
+<code>OPENAI_API_BASE=http://localhost:3000/v1
+OPENAI_API_KEY=sk-freellm-master
+AIDER_MODEL=openai/auto-free</code>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB 4: Panduan Pemula & FAQ -->
+    <section id="tab-guide" class="tab-pane">
+      <div class="config-card">
+        <h2 style="font-size: 1.35rem; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+          <span>📖</span> Panduan Lengkap Pemula: Cara Menggunakan FreeLLM Hub
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
+          FreeLLM Hub adalah aplikasi lokal yang menghubungkan berbagai provider AI gratis di dunia ke dalam <strong>1 Endpoint OpenAI yang sama</strong> (`http://localhost:3000/v1`). Anda tidak perlu pusing mempelajari API yang berbeda-beda.
+        </p>
+      </div>
+
+      <!-- 4 Langkah Visual -->
+      <div class="config-card">
+        <h3 style="margin-bottom: 14px;">🚀 4 Langkah Praktis untuk Memulai</h3>
+        <div class="wizard-steps-grid">
+          <div class="wizard-step-item">
+            <div>
+              <span class="step-num-badge">1</span>
+              <h4>Pilih 1-2 Provider</h4>
+              <p>Buka tab <strong>Dapatkan & Kelola API Key</strong>. Rekomendasi utama: <strong>Groq Cloud</strong> (kecepatan kilat) dan <strong>Google Gemini</strong> (konteks 1 juta token).</p>
+            </div>
+          </div>
+          <div class="wizard-step-item">
+            <div>
+              <span class="step-num-badge">2</span>
+              <h4>Ambil Kunci Gratis</h4>
+              <p>Klik tombol biru <strong>"Dapatkan Key ↗"</strong> pada kartu provider. Login dengan Google/GitHub dan buat API key baru tanpa kartu kredit.</p>
+            </div>
+          </div>
+          <div class="wizard-step-item">
+            <div>
+              <span class="step-num-badge">3</span>
+              <h4>Simpan & Uji Koneksi</h4>
+              <p>Tempel kuncinya di kolom input provider lalu klik <strong>"Simpan"</strong>. Tekan tombol <strong>"⚡ Uji Ping"</strong> untuk memastikan statusnya hijau.</p>
+            </div>
+          </div>
+          <div class="wizard-step-item">
+            <div>
+              <span class="step-num-badge">4</span>
+              <h4>Sambungkan ke IDE / Chat</h4>
+              <p>Gunakan langsung di tab <strong>AI Chat Playground</strong> atau pasang di Cursor/OpenCode dengan Master Key <code>sk-freellm-master</code>!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rekomendasi Provider -->
+      <div class="config-card">
+        <h3>🏆 Rekomendasi Provider Terbaik Berdasarkan Kebutuhan Anda</h3>
+        <div class="recom-grid">
+          <div class="recom-box">
+            <div>
+              <h4>⚡ Kebutuhan Coding & Kecepatan Kilat</h4>
+              <p>Paling cocok untuk autocomplete coding instan di Cursor atau respons chat secepat kilat (500+ token/detik).</p>
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
+                <strong>Provider Terbaik:</strong> Groq Cloud, Cerebras Inference<br>
+                <strong>Model:</strong> <code>llama-3.3-70b-versatile</code>, <code>llama3.1-70b</code>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="document.querySelector('[data-tab=\'tab-directory\']').click();">
+              Buka Pendaftaran Groq ➔
+            </button>
+          </div>
+
+          <div class="recom-box">
+            <div>
+              <h4>📚 Kebutuhan Dokumen Raksasa & PDF</h4>
+              <p>Paling cocok untuk menganalisis buku, dokumen ratusan halaman, atau seluruh file repositori koding sekaligus (1 Juta - 2 Juta Token).</p>
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
+                <strong>Provider Terbaik:</strong> Google Gemini (AI Studio)<br>
+                <strong>Model:</strong> <code>gemini-2.0-flash</code>, <code>gemini-1.5-pro</code>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="document.querySelector('[data-tab=\'tab-directory\']').click();">
+              Buka Pendaftaran Gemini ➔
+            </button>
+          </div>
+
+          <div class="recom-box">
+            <div>
+              <h4>🧠 Kebutuhan Penalaran Rumit (Reasoning)</h4>
+              <p>Paling cocok untuk problem solving matematika, arsitektur software kompleks, dan logika tingkat tinggi.</p>
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
+                <strong>Provider Terbaik:</strong> SambaNova, SiliconFlow, OpenRouter<br>
+                <strong>Model:</strong> <code>DeepSeek-R1</code>, <code>deepseek-r1:free</code>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="document.querySelector('[data-tab=\'tab-directory\']').click();">
+              Buka Pendaftaran SambaNova ➔
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Interaktif -->
+      <div class="config-card">
+        <h3>❓ Tanya Jawab Populer (FAQ)</h3>
+        <div class="faq-grid">
+          
+          <div class="faq-card">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <span>Apakah saya harus mendaftar dan mengisi semua 14 provider?</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="faq-answer">
+              <strong>Tidak perlu sama sekali!</strong> Anda cukup mendaftar ke 1 atau 2 provider saja (misal: Groq dan Gemini). Provider lain bersifat opsional sebagai cadangan. Sistem FreeLLM Hub akan langsung bekerja meskipun Anda hanya mengisi 1 provider.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <span>Bagaimana cara kerja 1 Master API Key di Cursor / OpenCode?</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="faq-answer">
+              Di pengaturan Cursor/OpenCode, Anda cukup memasukkan Base URL: <code>http://localhost:3000/v1</code> dan API Key: <code>sk-freellm-master</code>. Ketika Anda memilih model <code>auto-free</code>, server lokal akan meneruskan prompt ke provider aktif Anda. Jika satu provider terkena limit/kuota habis, server otomatis mengalihkan prompt ke provider cadangan tanpa memutuskan koneksi di IDE Anda!
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <span>Apakah data dan kunci API saya aman?</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="faq-answer">
+              <strong>100% Aman.</strong> Server ini berjalan sepenuhnya di komputer lokal Anda (localhost). Kunci API hanya disimpan di file <code>.env</code> lokal di komputer Anda dan langsung dikirim ke server resmi provider (seperti Google atau Groq) tanpa melalui perantara server pihak ketiga mana pun.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <span>Bagaimana jika saya punya 2 atau 3 akun gratis di Groq atau Gemini?</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="faq-answer">
+              Anda bisa memasukkan beberapa kunci sekaligus dengan memisahkannya menggunakan tanda koma di file <code>.env</code>, contoh: <code>GROQ_API_KEY=gsk_kunci1,gsk_kunci2</code>. Server akan otomatis memutar (*round-robin*) kuncinya secara bergiliran sehingga kuota Anda berlipat ganda!
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <span>Mengapa saat mencari, kartu provider tiba-tiba hilang?</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="faq-answer">
+              Hal tersebut terjadi jika kotak pencarian terisi teks atau email otomatis dari browser. Cukup hapus teks di kotak pencarian atau klik tombol <strong>"✕"</strong> di ujung kotak pencarian untuk menampilkan kembali semua provider.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
